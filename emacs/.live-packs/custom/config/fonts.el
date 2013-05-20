@@ -1,1 +1,1 @@
-(set-default-font "Monaco-13")
+(set-default-font "inconsolata-14")
