@@ -2,6 +2,7 @@ URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.iso14755: False
 URxvt.perl-ext-common: default,clipboard
 URxvt.loginShell:           true
+URxvt*termName: xterm
 
 Rxvt*background: black
 Rxvt*foreground: green
