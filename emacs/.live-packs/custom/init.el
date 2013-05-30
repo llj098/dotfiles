@@ -4,5 +4,7 @@
 ;; See README for more information.
 
 ;; Load bindings config
+
+(setq live-disable-zone t)
 (live-load-config-file "bindings.el")
 (live-load-config-file "fonts.el")
