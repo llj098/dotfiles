@@ -5,3 +5,6 @@ package-query
 ttf-monaco
 yaourt
 zerofree
+freetype2-ubuntu 
+fontconfig-ubuntu 
+cairo-ubuntu
