@@ -17,7 +17,7 @@ Rxvt*cursorBlink:true
 Rxvt*cursorColor:orange
 
 rxvt*transpscrollbar:true
-URxvt.font: xft:dina:size=13
+URxvt.font: xft:monaco:size=11
 
 urxvt*color0: #2B2B2B
 urxvt*color1: #870000
