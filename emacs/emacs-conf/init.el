@@ -31,6 +31,7 @@
 			  'paredit 'clojure-mode
 			  'clojure-test-mode
 			  'markdown-mode
+			  'undo-tree
 			  'rainbow-delimiters
 			  'zenburn-theme)
 (package-initialize)
@@ -38,13 +39,22 @@
 ;;; common config
 (ido-mode t)
 (load-theme 'zenburn t)
-(linum-mode)
-(set-default-font "Inconsolata-15")
+(linum-mode t)
+(undo-tree-mode t)
+(show-paren-mode 1)
 
 (defvar modes-to-hook '(paredit-mode
-			rainbow-delimiters-mode))
+			rainbow-delimiters-mode
+			undo-tree-mode))
 (tool-bar-mode -1)
-(toggle-frame-maximized)
+(menu-bar-mode -1)
+
+(if (eq system-type 'windows-nt)
+    (set-default-font "Consolas-14")
+  (set-default-font "Inconsolata-15"))
+
+(if (eq system-type 'darwin)
+    (Toggle-frame-maximized))
 
 ;;; clojure
 (mapcar (lambda (m) (add-hook 'clojure-mode-hook m))
