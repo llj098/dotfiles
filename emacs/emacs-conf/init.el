@@ -39,8 +39,9 @@
 ;;; common config
 (ido-mode t)
 (load-theme 'zenburn t)
-(linum-mode t)
-(undo-tree-mode t)
+(global-linum-mode)
+(global-undo-tree-mode)
+(global-auto-complete-mode)
 (show-paren-mode 1)
 
 (defvar modes-to-hook '(paredit-mode
@@ -55,7 +56,7 @@
   (set-default-font "Inconsolata-15"))
 
 (if (eq system-type 'darwin)
-    (Toggle-frame-maximized))
+    (toggle-frame-maximized))
 
 ;;; clojure
 (mapcar (lambda (m) (add-hook 'clojure-mode-hook m))
