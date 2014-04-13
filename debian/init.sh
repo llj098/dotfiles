@@ -1,8 +1,11 @@
+
 #pkgs
 sudo apt-get install tig zsh git-core build-essential curl wget w3m tmux screen
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 sudo chsh -s /usr/bin/zsh
 echo 'export PATH="$PATH:$HOME/bin"' >> ~/.zshrc
+cp ../git/.git* ~/
+
 
 #emacs
 wget -q -O - http://emacs.naquadah.org/key.gpg | sudo apt-key add -
