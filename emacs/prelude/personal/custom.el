@@ -13,13 +13,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'super)
-
-(sml/setup)
-(window-numbering-mode)
-(set-default-font "Input Mono 16")
-
-
-(setq lua-indent-level 2)

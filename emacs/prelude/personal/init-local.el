@@ -1,5 +1,6 @@
 ;; packages
 
+(require 'prelude-packages)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
@@ -11,39 +12,73 @@
 
 (package-initialize)
 (setq package-check-signature nil)
-(add-to-list 'exec-path "/usr/local/bin")
-
-
-
-(defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.
-   Return a list of installed packages or nil for every skipped package."
-  (mapcar
-   (lambda (package)
-     (if (package-installed-p package)
-         nil
-       (package-install package)))
-   packages))
 
 ;; make sure to have downloaded archive description.
 ;; Or use package-archive-contents as suggested by Nicolas Dudebout
 (or (file-exists-p package-user-dir)
     (package-refresh-contents))
 
-(ensure-package-installed 'ace-jump-mode 'helm 'imenu 'magit 'cider
-                          'paredit 'clojure-mode
-                          'expand-region
-                          'smex 'imenu-anywhere 'w3m
-                          'markdown-mode
-                          'smart-mode-line
-                          'undo-tree 'lua-mode
-                          'auto-complete 'auto-indent-mode
-                          'rainbow-delimiters
-                          'window-numbering
-                          'zenburn-theme)
+(defvar my-packages '(ace-jump-mode helm imenu magit cider
+                                  paredit clojure-mode
+                                  expand-region
+                                  smex imenu-anywhere w3m
+                                  markdown-mode
+                                  smart-mode-line
+                                  undo-tree lua-mode
+                                  auto-complete auto-indent-mode
+                                  rainbow-delimiters
+                                  window-numbering
+                                  zenburn-theme))
+
+(prelude-require-packages my-packages)
 (package-initialize)
 
+
+;; prelude modules:
+
+;;; Uncomment the modules you'd like to use and restart Prelude afterwards
+
+;; Emacs IRC client
+(require 'prelude-erc)
+(require 'prelude-ido) ;; Super charges Emacs completion for C-x C-f and more
+(require 'prelude-helm) ;; Interface for narrowing and search
+(require 'prelude-helm-everywhere) ;; Enable Helm everywhere
+(require 'prelude-company)
+;; (require 'prelude-key-chord) ;; Binds useful features to key combinations
+;; (require 'prelude-mediawiki)
+;; (require 'prelude-evil)
+
+;;; Programming languages support
+(require 'prelude-c)
+(require 'prelude-clojure)
+ (require 'prelude-coffee)
+;; (require 'prelude-common-lisp)
+(require 'prelude-css)
+(require 'prelude-emacs-lisp)
+;; (require 'prelude-erlang)
+;; (require 'prelude-elixir)
+(require 'prelude-go)
+;; (require 'prelude-haskell)
+(require 'prelude-js)
+;; (require 'prelude-latex)
+(require 'prelude-lisp)
+;; (require 'prelude-ocaml)
+(require 'prelude-org) ;; Org-mode helps you keep TODO lists, notes and more
+(require 'prelude-perl)
+;; (require 'prelude-python)
+;; (require 'prelude-ruby)
+;; (require 'prelude-scala)
+(require 'prelude-scheme)
+(require 'prelude-shell)
+;; (require 'prelude-scss)
+(require 'prelude-web) ;; Emacs mode for web templates
+(require 'prelude-xml)
+;; (require 'prelude-yaml)
+
+
+
 ;;; common config
+(add-to-list 'exec-path "/usr/local/bin")
 (setq auto-save-dir "~/.emacs-bak")
 (unless (file-exists-p auto-save-dir)
   (mkdir auto-save-dir))
@@ -80,7 +115,17 @@
    nil 'fullscreen
    (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
-;; (if (eq system-type 'darwin)  (toggle-fullscreen))
+(if (eq system-type 'darwin)
+    (progn
+      (toggle-fullscreen)
+      (setq mac-command-modifier 'meta)
+      (setq mac-option-modifier 'super)))
+
+(sml/setup)
+(window-numbering-mode)
+(set-default-font "Input Mono 11")
+
+(setq lua-indent-level 2)
 
 ;;; clojure
 (mapcar (lambda (m) (add-hook 'clojure-mode-hook m)) modes-to-hook)
