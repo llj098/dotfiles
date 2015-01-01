@@ -1,0 +1,242 @@
+    1  source /etc/profile
+    2  export PS1="(chroot) $PS1""
+    3  export PS1="(chroot) $PS1"
+    4  emerge --sync
+    5  vim /etc/portage/make.conf
+    6  nano /etc/portage/make.conf
+    7  less /etc/portage/make.conf
+    8  nano /etc/portage/make.conf
+    9  nano -W /etc/locale.gen 
+   10  locale-gen 
+   11  eselect locale
+   12  eselect locale list
+   13  eselect locale set 2
+   14  . /etc/profile
+   15  PS1="(chroot) $PS1"
+   16  env-update && source /etc/profile
+   17  PS1="(chroot) $PS1"
+   18  emerge --ask sys-kernel/gentoo-sources
+   19  ls -l /usr/src/linux
+   20  emerge genkernel
+   21  emerge --ask sys-kernel/genkernel
+   22  nano -W /etc/fstab 
+   23  fdisk -l
+   24  genkernel all
+   25  ls /lib/modules/3.17.7-gentoo/
+   26  emerge --ask sys-kernel/limux-firmware
+   27  emerge --ask sys-kernel/linux-firmware
+   28  nano -w /etc/conf.d/netmount 
+   29  nano -w /etc/conf.d/net
+   30  emerge --ask --noreplace net-misc/netifrc
+   31  nano -w /etc/conf.d/net
+   32  cd /etc/init.d/
+   33  ln -s net.lo net.eth0
+   34  rc-update add net.eth0 default
+   35  nano -W /etc/hosts 
+   36  passwd
+   37  nano -w /etc/rc.conf 
+   38  emerge --ask app-admin/syslog-ng
+   39  rc-update add syslog-ng default
+   40  emerge --ask sys-process/cronie
+   41  rc-update add cronie default
+   42  emerge --ask sys-apps/mlocate
+   43  rc-update add sshd default
+   44  emerge --ask net-misc/dhcpd net-dialup/ppp
+   45  emerge --ask net-misc/dhcpd
+   46  emerge --ask net-misc/dhcpcd net-dialup/ppp
+   47  emerge --ask sys-boot/grub
+   48  grub2-install /dev/sda
+   49  grub2-mkconfig -o /boot/grub/grub.cfg
+   50  exit
+   51  emerge --ask zsh clojure java lua python ruby urxvt 
+   52  emerge --ask zsh clojure openjdk lua python ruby urxvt 
+   53  emerge --ask zsh clojure jdk lua python ruby urxvt 
+   54  emerge --ask zsh clojure jdk lua python ruby rxvt-unicode 
+   55  etc-update 
+   56  emerge --ask zsh clojure jdk lua python ruby rxvt-unicode 
+   57  clojure-1.6 
+   58  lein
+   59  zsh
+   60  exit
+   61  curl http://git.io/epre | sh
+   62  curl -L http://git.io/epre | sh
+   63  git clone https://github.com/llj098/dotfiles
+   64  git clone https://github.com/llj098/dotfiles.git
+   65  cd dotfiles/
+   66  ls
+   67  cd pkgs/
+   68  lks
+   69  ls
+   70  cat misc 
+   71  vim misc 
+   72  fg
+   73  tmux
+   74  ls
+   75  bash misc 
+   76  zsh
+   77  ls
+   78  cd ..
+   79  ls
+   80  emerge -s rxvt
+   81  ls
+   82  cd X
+   83  ls
+   84  ls -a
+   85  less .xinitrc 
+   86  exit
+   87  ifconfig
+   88  ifconfig -all
+   89  ifconfig -a
+   90  less /etc/conf.d/net
+   91  nano /etc/conf.d/net
+   92  ifconfig -a
+   93  nano /etc/conf.d/net
+   94  ifconfig
+   95  ifconfig -a
+   96  cd /etc/init.d/
+   97  ln -s net.lo net.enp0s3
+   98  rm /etc/init.d/net.eth0 
+   99  rc-update add net.enp0s3 default
+  100  rc-update del net.eth0
+  101  /etc/init.d/net.enp0s3 
+  102  /etc/init.d/net.enp0s3  start
+  103  ip addr
+  104  ifconfig
+  105  ping www.baidu.com
+  106  emerge vim emacs
+  107  vim
+  108  emacs 
+  109  emacs
+  110  vim
+  111  emacs --version
+  112  emerge --ask pp-portage/layman
+  113  emerge --ask app-portage/layman
+  114  emerge --ask app-portage/layman
+  115  man emerge
+  116  emerge --ask app-portage/layman
+  117  emerge --ask app-portage/layman
+  118  ls /etc/portage/
+  119  etc-update 
+  120  y
+  121  less /etc/portage/package.use 
+  122  emerge --ask app-portage/layman
+  123  '
+  124  layman -a ixit
+  125  merge ixit
+  126  emerge ixit
+  127  emerge --ask --autounmask-write x11-wm/enlightenment:0.17/0.19
+  128  emerge --ask --autounmask-write x11-wm/enlightenment:0.17
+  129  emerge --ask --autounmask-write x11-wm/enlightenment:0.17/0.19.2
+  130  emerge --ask --autounmask-write x11-wm/enlightenment:0.17
+  131  etc-update 
+  132  etc-update 
+  133  emerge --ask --autounmask-write x11-wm/enlightenment:0.17
+  134  vim /etc/portage/make.conf
+  135  emerge --ask --autounmask-write x11-wm/enlightenment:0.17
+  136  etc-update
+  137  less /etc/portage/package.use 
+  138  emerge --ask --autounmask-write x11-wm/enlightenment:0.17
+  139  emerge --ask --autounmask-write x11-wm/enlightenment:0.17
+  140  startx
+  141  emerge xinit
+  142  emerge xdm
+  143  vim /etc/conf.d/xdm
+  144  rc-update add xdm default
+  145  ls /etc/init.d/
+  146  emerge xdm
+  147  /etc/init.d/xdm
+  148  which xdm
+  149  ln -s xdm /usr/bin/xdm
+  150  ln -s /usr/bin/xdm xdm
+  151  /etc/init.d/xdm
+  152  /etc/init.d/xdm start
+  153  rm /etc/init.d/xdm
+  154  emerge xorg-x11
+  155  emerge xorg-server
+  156  /etc/init.d/xdm
+  157  emerge --ask xorg-server
+  158  etc-update 
+  159  emerge --ask xorg-server
+  160  exit
+  161  layman
+  162  emerge layman
+  163  laymn
+  164  layman
+  165  top -d 1
+  166  tail -f /var/log/emerge.log 
+  167  tail -f /var/log/emerge-fetch.log.log 
+  168  tail -f /var/log/emerge-fetch.log
+  169  emerge --ask slim
+  170  emerge --ask x11-misc/slim
+  171  emerge --ask firefox chromium
+  172  etc-update
+  173  emerge --ask firefox chromium
+  174  top -d 1
+  175  links
+  176  w3m
+  177  emerge --ask w3m curl git svn hg 
+  178  emerge --ask w3m curl git hg 
+  179  emerge --ask w3m curl git
+  180  git
+  181  curl
+  182  emerge --ask w3m 
+  183  w3m github.om
+  184  w3m https://github.com
+  185  w3m http://bing.com
+  186  screen
+  187  emerge --ask screen tmux
+  188  emerge --ask tmux
+  189  tmu
+  190  tmux
+  191  emacs
+  192  emacs
+  193  ls
+  194  cp -r dotfiles/emacs/prelude/personal/ ~/.emacs.d/
+  195  emacs
+  196  man eselect
+  197  eselect emacs help
+  198  eselect emacs usage
+  199  eselect emacs version
+  200  eselect emacs list
+  201  emerge --ask emacs
+  202  man emerge
+  203  merge -U libxml2 X emacs
+  204  emerge -U libxml2 X emacs
+  205  emerge -U "libxml2 X" emacs
+  206  emerge -U "libxml2" emacs
+  207  emerge --ask -U "libxml2" emacs
+  208  emerge --ask --newuse "libxml2" emacs
+  209  vim /etc/portage/make.conf
+  210  emerge --ask --newuse "libxml2" emacs
+  211  zsh
+  212  top -d 1
+  213  cd dotfiles/
+  214  ls
+  215  cd pkgs/
+  216  ls
+  217  less misc 
+  218  vim misc 
+  219  sh misc 
+  220  bash misc 
+  221  fg
+  222  bash misc 
+  223  ls
+  224  chmod +x lein
+  225  mv lein /usr/local/bin/
+  226  lein
+  227  less /etc/portage/make.conf
+  228  emacs
+  229  emacs --daemon
+  230  cd /etc/portage
+  231  ls
+  232  cd /
+  233  cd cd usr/portage/
+  234  cd  /usr/portage/
+  235  ls
+  236  zsh
+  237  ls
+  238  exit
+  239  hishtory > bashhistory
+  240  history
+  241  history
+  242  history > h

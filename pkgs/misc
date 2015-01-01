@@ -1,8 +1,11 @@
 # emacs-live
-bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)
+#bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)
+
+#emacs prelude
+curl -L http://git.io/epre | sh
 
 #oh-my-zsh
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
 #leiningen
-curl https://raw.github.com/technomancy/leiningen/stable/bin/lein -o /usr/bin/lein
+wget https://raw.github.com/technomancy/leiningen/stable/bin/lein 
