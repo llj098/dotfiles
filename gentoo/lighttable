@@ -1,0 +1,4 @@
+wget https://d35ac8ww5dfjyg.cloudfront.net/playground/bins/0.7.2/LightTableLinux64.tar.gz
+tar xfz LightTablelinux64.tar.gz
+sudo mv LightTable /opt
+sudo ln -s /opt/LightTable/LightTable /usr/bin/LightTable

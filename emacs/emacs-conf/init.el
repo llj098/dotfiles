@@ -17,9 +17,7 @@
    (lambda (package)
      (if (package-installed-p package)
          nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
-         package)))
+         (package-install package)))
    packages))
 
 ;; make sure to have downloaded archive description.
@@ -29,8 +27,21 @@
 
 (ensure-package-installed 'iedit 'magit 'cider
 			  'paredit 'clojure-mode
-			  'clojure-test-mode
+			  'lua-mode
+			  'guru-mode
+			  'restclient 'ace-jump-mode
+			  'multiple-cursors 'expand-region
+			  'window-numbering
+			  'smart-mode-line
+			  'smex
+			  'helm
+			  'flymake
+			  'flymake-lua
+			  'flymake-shell
+			  'flycheck
+			  'magit
 			  'markdown-mode
+			  'org
 			  'undo-tree
 			  'rainbow-delimiters
 			  'zenburn-theme)
@@ -41,8 +52,9 @@
 (load-theme 'zenburn t)
 (global-linum-mode)
 (global-undo-tree-mode)
-(global-auto-complete-mode)
 (show-paren-mode 1)
+(window-numbering-mode 1)
+(sml/setup)
 
 (defvar modes-to-hook '(paredit-mode
 			rainbow-delimiters-mode
@@ -53,7 +65,7 @@
 
 (if (eq system-type 'windows-nt)
     (set-default-font "Consolas-14")
-  (set-default-font "Inconsolata-15"))
+  (set-default-font "PragmataPro-12"))
 
 (if (eq system-type 'darwin)
     (toggle-frame-maximized))
@@ -67,9 +79,10 @@
 	(cons 'cider-turn-on-eldoc-mode modes-to-hook))
 
 ;; Use ac-nrepl-popup-doc to show in-line docs in a clojure buffer
-(eval-after-load "cider"
+(Eval-after-load "cider"
   '(define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
 
 ;; Use ac-nrepl-popup-doc to show in-line docs in an nrepl buffer
 (eval-after-load "cider"
   '(define-key cider-repl-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
+
