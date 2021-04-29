@@ -25,8 +25,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-(setq doom-font "PragmataPro-12")
+(setq doom-theme 'doom-zenburn)
+(setq doom-font "PragmataPro-16")
 
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -82,6 +82,10 @@
 	   deft-directory "~/syncthing/deft"
 	   deft-auto-save-interval 5.0
 	   deft-use-filter-string-for-filename t))
+;;
+;; TODO: orgmode keymap, C-k....
+;; https://github.com/hlissner/doom-emacs/issues/2403
+;;
 
 (after! evil-snipe
   (evil-snipe-mode -1))
