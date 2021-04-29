@@ -188,4 +188,5 @@
        (default +bindings +smartparens))
 
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq-default evil-disable-insert-state-bindings t)
