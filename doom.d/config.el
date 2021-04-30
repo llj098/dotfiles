@@ -28,7 +28,7 @@
 (setq doom-theme 'doom-zenburn)
 (setq doom-font "PragmataPro-14")
 (if (eq system-type 'darwin)
-    (setq doom-font "PragmataPro-16"))
+    (setq doom-font "PragmataPro-18"))
 
 
 ;; If you use `org' and don't want your org files in the default location below,
