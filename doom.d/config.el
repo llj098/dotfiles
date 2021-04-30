@@ -26,7 +26,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-zenburn)
-(setq doom-font "PragmataPro-16")
+(setq doom-font "PragmataPro-14")
 
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -36,6 +36,7 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
+(global-undo-tree-mode)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -85,7 +86,14 @@
 ;;
 ;; TODO: orgmode keymap, C-k....
 ;; https://github.com/hlissner/doom-emacs/issues/2403
-;;
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (org . t)
+   (lilypond . t)))
+
+
 
 (after! evil-snipe
   (evil-snipe-mode -1))
