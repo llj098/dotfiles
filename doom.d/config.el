@@ -1,3 +1,5 @@
+;;; conf.el -*- lexical-binding: t; -*-
+
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
@@ -89,16 +91,11 @@
 ;; TODO: orgmode keymap, C-k....
 ;; https://github.com/hlissner/doom-emacs/issues/2403
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (org . t)
-   (lilypond . t)))
-
 
 
 (after! evil-snipe
   (evil-snipe-mode -1))
+
 
 (global-unset-key (kbd "C-SPC"))
 (evil-define-key 'insert c-mode-map (kbd "C-SPC") nil) ;; company-active-map
@@ -106,20 +103,28 @@
 (evil-define-key 'insert c-mode-map (kbd "M-SPC") 'company-active-map) ;; company-active-map
 
 
-(elpy-enable)
+;; TODO: below is too slow....
 
-;; Use IPython for REPL
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
+;; (elpy-enable)
 
-;; Enable Flycheck
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; ;; Use IPython for REPL
+;; (setq python-shell-interpreter "jupyter"
+;;       python-shell-interpreter-args "console --simple-prompt"
+;;       python-shell-prompt-detect-failure-warning nil)
+;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+;;              "jupyter")
 
-;; Enable autopep8
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; ;; Enable Flycheck
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; ;; Enable autopep8
+;; (require 'py-autopep8)
+;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '((emacs-lisp . t)
+;;    (org . t)
+;;    (lilypond . t)))
