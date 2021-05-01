@@ -135,6 +135,11 @@ reverse_lookup:
 
 punctuator:
   import_preset: default
+  half_shape:
+    '/': [ '/', '/hello', '/bye', '/* TODO */' ]
+    '+': ['+', '+_+']
+    '=': ['=', '=_=']
+    '.': ['.', '...']
 
 key_binder:
   import_preset: default
@@ -143,3 +148,16 @@ recognizer:
   import_preset: default
   patterns:
     reverse_lookup: "`[a-z]*'?$"
+
+menu:
+  page_size: 2
+  page_down_cycle: true
+
+
+key_binder:
+  bindings:
+    - { when: composing, accept: Tab,        send: Page_Down }
+    - { when: composing, accept: Shift+Tab,  send: Page_Up }
+    - { when: composing, accept: Control+g,  send: Escape }
+    - { when: composing, accept: Control+p,  send: Page_Up }
+    - { when: composing, accept: Control+n,  send: Page_Down }

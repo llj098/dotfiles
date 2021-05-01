@@ -66,3 +66,5 @@
 (package! youdao-dictionary)
 (if (eq system-type 'darwin)
     (package! osx-dictionary))
+(package! lua-mode)
+(package! yaml-mode)
