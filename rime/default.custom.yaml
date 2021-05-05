@@ -3,25 +3,6 @@ patch:
     - schema: double_pinyin_flypy  # 小鶴雙拼
     - schema: luna_pinyin_simp     # 朙月拼音 简化字模式
 
-  switches:
-    - name: ascii_mode
-      reset: 1
-      states: [ 中文, 西文 ]
-    - name: full_shape
-      states: [ 半角, 全角 ]
-    - name: simplification
-      states: [ 漢字, 汉字 ]
-    - name: ascii_punct
-      states: [ 。，, ．， ]
-
-  punctuator:
-    import_preset: default
-    half_shape:
-      '/': [ '/', '/hello', '/bye', '/* TODO */' ]
-      '+': ['+', '+_+']
-      '=': ['=', '=_=']
-      '.': ['.', '...']
-
   menu:
     page_size: 2
     page_down_cycle: true
