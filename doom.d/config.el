@@ -103,28 +103,25 @@
 (evil-define-key 'insert c-mode-map (kbd "M-SPC") 'company-active-map) ;; company-active-map
 
 
-;; TODO: below is too slow....
+;; python
+(add-hook! 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(add-hook! python-mode
+  (elpy-enable)
+  ;; Use IPython for REPL
+  (setq python-shell-interpreter "jupyter"
+        python-shell-interpreter-args "console --simple-prompt"
+        python-shell-prompt-detect-failure-warning nil)
+  (add-to-list 'python-shell-completion-native-disabled-interpreters
+               "jupyter"))
 
-;; (elpy-enable)
+;; flycheck
+(add-hook! prog-mode 'flycheck-mode)
 
-;; ;; Use IPython for REPL
-;; (setq python-shell-interpreter "jupyter"
-;;       python-shell-interpreter-args "console --simple-prompt"
-;;       python-shell-prompt-detect-failure-warning nil)
-;; (add-to-list 'python-shell-completion-native-disabled-interpreters
-;;              "jupyter")
+;; org
+(add-hook! org-mode
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (org . t)
+     (lilypond . t))))
 
-;; ;; Enable Flycheck
-;; (when (require 'flycheck nil t)
-;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;; ;; Enable autopep8
-;; (require 'py-autopep8)
-;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages
-;;  '((emacs-lisp . t)
-;;    (org . t)
-;;    (lilypond . t)))
