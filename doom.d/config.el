@@ -125,3 +125,4 @@
      (org . t)
      (lilypond . t))))
 
+(setq org-startup-folded t)
