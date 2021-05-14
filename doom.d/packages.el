@@ -68,3 +68,4 @@
     (package! osx-dictionary))
 (package! lua-mode)
 (package! yaml-mode)
+(package! restclient)
