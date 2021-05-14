@@ -127,3 +127,40 @@
      (lilypond . t))))
 
 (setq org-startup-folded t)
+
+
+
+(use-package! company
+  :config
+
+  (general-define-key
+   :keymaps   'company-mode-map
+   "C-;"      'company-complete)
+
+  (general-define-key
+   :keymaps   'company-active-map
+   "C-;"      'company-complete
+   "M-1"      'company-complete-number
+   "M-2"      'company-complete-number
+   "M-3"      'company-complete-number
+   "M-4"      'company-complete-number
+   "M-5"      'company-complete-number
+   "M-6"      'company-complete-number
+   "M-7"      'company-complete-number
+   "M-8"      'company-complete-number
+   "M-9"      'company-complete-number
+   "M-0"      'company-complete-number)
+
+    (setq company-show-numbers t
+        company-idle-delay 0.3
+        company-tooltip-limit 10
+        company-auto-commit nil
+        company-auto-commit-chars '(46)
+        company-dabbrev-other-buffers t
+        company-selection-wrap-around t
+        company-minimum-prefix-length 2
+        company-dabbrev-code-everywhere nil
+        company-dabbrev-downcase nil
+        company-dabbrev-ignore-case 'keep-prefix
+        company-dabbrev-code-ignore-case nil
+        company-dabbrev-ignore-buffers "\\`[ *]"))
