@@ -63,7 +63,7 @@
 (package! py-autopep8)
 (package! ein)
 (package! undo-tree)
-(package! youdao-dictionary)
+;; (package! youdao-dictionary)
 (if (eq system-type 'darwin)
     (package! osx-dictionary))
 (package! lua-mode)
