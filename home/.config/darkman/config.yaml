@@ -1,0 +1,6 @@
+# Static coarse location for daily sunrise/sundown calculation.
+# Darkman is only a scheduler here; it does not publish application color mode.
+lat: 39.9
+lng: 116.4
+usegeoclue: false
+portal: false

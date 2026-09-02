@@ -1,0 +1,6 @@
+[Hotkey/TriggerKeys]
+0=Control+Shift+space
+
+[Behavior]
+ShareInputState=No
+ActiveByDefault=True

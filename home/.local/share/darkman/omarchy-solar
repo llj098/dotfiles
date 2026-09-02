@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -uo pipefail
+
+mode="${1:-}"
+export PATH=/usr/local/bin:/usr/bin:/bin
+export OMARCHY_PATH="${OMARCHY_PATH:-/usr/share/omarchy}"
+
+# The service is tied to graphical-session.target; import the compositor
+# coordinates from the user manager rather than persisting a volatile instance ID.
+while IFS= read -r entry; do
+  case "$entry" in
+    XDG_RUNTIME_DIR=*|HYPRLAND_INSTANCE_SIGNATURE=*|WAYLAND_DISPLAY=*|DISPLAY=*|DBUS_SESSION_BUS_ADDRESS=*)
+      export "$entry"
+      ;;
+  esac
+done < <(systemctl --user show-environment)
+
+case "$mode" in
+  light)
+    theme="rose-pine"
+    temperature_action=(hyprctl hyprsunset identity)
+    ;;
+  dark)
+    theme="tokyo-night"
+    temperature_action=(hyprctl hyprsunset temperature 4000)
+    ;;
+  *)
+    printf 'omarchy-solar: expected light or dark, got %q\n' "$mode" >&2
+    exit 2
+    ;;
+esac
+
+rc=0
+current=$(omarchy-theme-current 2>/dev/null | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+if [[ "$current" != "$theme" ]]; then
+  omarchy theme set "$theme" || rc=1
+fi
+"${temperature_action[@]}" >/dev/null || rc=1
+
+printf 'omarchy-solar: mode=%s theme=%s temperature=%s\n' \
+  "$mode" "$theme" "$([[ $mode == light ]] && echo identity || echo 4000K)"
+exit "$rc"
