@@ -4,6 +4,7 @@ home/.config/darkman/config.yaml	.config/darkman/config.yaml	0600
 home/.config/doom/config.el	.config/doom/config.el	0600
 home/.config/doom/custom.el	.config/doom/custom.el	0600
 home/.config/doom/desktop-theme.el	.config/doom/desktop-theme.el	0600
+home/.config/doom/doom-gitconfig	.config/doom/doom-gitconfig	0600
 home/.config/doom/init.el	.config/doom/init.el	0600
 home/.config/doom/packages.el	.config/doom/packages.el	0600
 home/.config/environment.d/50-firefox-wayland.conf	.config/environment.d/50-firefox-wayland.conf	0644
