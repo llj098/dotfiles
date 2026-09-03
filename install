@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+MANIFEST=${1:?manifest.tsv path is required}
 BACKUP="$HOME/.local/state/dotfiles/backups/$(date +%Y%m%d-%H%M%S)"
 while IFS=$'\t' read -r source target mode; do
   [[ $source == source || -z $source || $source == \#* ]] && continue
@@ -13,5 +14,5 @@ while IFS=$'\t' read -r source target mode; do
     mv -- "$dst" "$BACKUP/$target"
   fi
   install -D -m "$mode" "$src" "$dst"
-done <"$ROOT/manifest.tsv"
+done <"$MANIFEST"
 printf 'dotfiles_commit=%s\n' "$(git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo uncommitted)"
