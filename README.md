@@ -10,8 +10,10 @@ This repository deliberately excludes browser profiles, Omarchy plugin sources, 
 
 `home/minimal-emacs.d/` contains the personal overlay for an upstream
 [minimal-emacs.d](https://github.com/jamescherti/minimal-emacs.d) checkout.
-The deployment copies these source files into `~/.minimal-emacs.d/`; it does
-not vendor the upstream repository.
+The deployment copies these source files into `~/.emacs.d/`; it does
+not vendor the upstream repository. This makes Minimal the default for
+`emacs`; Doom remains available explicitly with
+`emacs --init-directory ~/.config/emacs`.
 
 Runtime files are intentionally excluded:
 
