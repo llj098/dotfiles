@@ -5,14 +5,8 @@ mode="${1:-}"
 export PATH=/usr/local/bin:/usr/bin:/bin
 export OMARCHY_PATH="${OMARCHY_PATH:-/usr/share/omarchy}"
 
-# Darkman follows its upstream default.target lifecycle. If no compositor is
-# running, the graphical-session oneshot will apply the current mode on login.
-if ! systemctl --user is-active --quiet graphical-session.target; then
-  printf 'omarchy-solar: graphical session is inactive; deferring mode=%s\n' "$mode"
-  exit 0
-fi
-
-# Import compositor coordinates instead of persisting a volatile instance ID.
+# The service is tied to graphical-session.target; import the compositor
+# coordinates from the user manager rather than persisting a volatile instance ID.
 while IFS= read -r entry; do
   case "$entry" in
     XDG_RUNTIME_DIR=*|HYPRLAND_INSTANCE_SIGNATURE=*|WAYLAND_DISPLAY=*|DISPLAY=*|DBUS_SESSION_BUS_ADDRESS=*)
