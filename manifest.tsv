@@ -1,11 +1,14 @@
 source	target
 home/.config/alacritty	.config/alacritty
+home/.config/brave-flags.conf	.config/brave-flags.conf
 home/.config/darkman	.config/darkman
 home/.config/environment.d	.config/environment.d
 home/.config/fcitx5	.config/fcitx5
 home/.config/hypr	.config/hypr
 home/.config/omarchy	.config/omarchy
 home/.config/systemd	.config/systemd
+home/.config/yay	.config/yay
+home/.local/share/applications/wechat-universal.desktop	.local/share/applications/wechat-universal.desktop
 home/.local/share/darkman	.local/share/darkman
 home/.local/share/fcitx5	.local/share/fcitx5
 home/minimal-emacs.d	.emacs.d
