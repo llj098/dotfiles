@@ -1,0 +1,14 @@
+source	target
+home/.config/alacritty	.config/alacritty
+home/.config/darkman	.config/darkman
+home/.config/environment.d	.config/environment.d
+home/.config/fcitx5	.config/fcitx5
+home/.config/hypr	.config/hypr
+home/.config/omarchy	.config/omarchy
+home/.config/systemd	.config/systemd
+home/.local/share/darkman	.local/share/darkman
+home/.local/share/fcitx5	.local/share/fcitx5
+home/minimal-emacs.d	.emacs.d
+home/.tmux.conf	.tmux.conf
+home/.zprofile	.zprofile
+home/.zshrc	.zshrc
