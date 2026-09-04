@@ -1,0 +1,15 @@
+[Unit]
+Description=Apply the current Darkman mode to an Omarchy graphical session
+PartOf=graphical-session.target
+Requires=graphical-session.target
+Wants=hyprsunset.service
+After=graphical-session.target hyprsunset.service darkman.service
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c 'exec "$HOME/.local/share/darkman/omarchy-solar" "$(/usr/bin/darkman get)"'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target
