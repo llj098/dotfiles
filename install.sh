@@ -25,7 +25,7 @@ while IFS=$'\t' read -r source target; do
       mv "$dst" "$BACKUP/$target"
     fi
     mkdir -p "$dst" "$BACKUP/$target"
-    rsync -a --backup --backup-dir="$BACKUP/$target" "$src/" "$dst/"
+    rsync -a --no-owner --no-group --no-perms --omit-dir-times --backup --backup-dir="$BACKUP/$target" "$src/" "$dst/"
   else
     if [[ -e $dst || -L $dst ]]; then
       cmp -s "$src" "$dst" && continue

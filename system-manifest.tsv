@@ -1,3 +1,2 @@
 source	target
-system/etc/brave/policies/managed	etc/brave/policies/managed
-system/etc/fonts/local.conf	etc/fonts/local.conf
+system	.
