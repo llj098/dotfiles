@@ -1,6 +1,6 @@
 # dotfiles
 
-User configuration for the Omarchy deployment. The repository manifests deploy the complete `home/` and `system/` trees through `./install.sh`.
+User configuration for the Omarchy deployment. The repository manifests deploy directory trees through `./install.sh`.
 
 Sources are the active t14g2 configuration plus validated linux-setup skill settings. Existing files are backed up under `~/.local/state/dotfiles/backups/`.
 
@@ -8,7 +8,7 @@ This repository deliberately excludes browser profiles, Omarchy plugin sources, 
 
 ## Emacs
 
-`home/.emacs.d/` contains the personal overlay for an upstream
+`minimal-emacs.d/` contains the personal overlay for an upstream
 [minimal-emacs.d](https://github.com/jamescherti/minimal-emacs.d) checkout.
 The deployment overlays these source files onto an upstream `~/.emacs.d/`
 checkout; it does not vendor the upstream repository. This makes Minimal the

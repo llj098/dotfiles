@@ -1,13 +1,13 @@
 # Emacs runtime and machine-specific compilation products
-home/.emacs.d/*.elc
-home/.emacs.d/**/*.elc
-home/.emacs.d/*.eln
-home/.emacs.d/**/*.eln
-home/.emacs.d/elpa/
-home/.emacs.d/eln-cache/
-home/.emacs.d/cache/
-home/.emacs.d/custom.el
-home/.emacs.d/history
-home/.emacs.d/recentf.eld
-home/.emacs.d/saveplace
-home/.emacs.d/projects.eld
+minimal-emacs.d/*.elc
+minimal-emacs.d/**/*.elc
+minimal-emacs.d/*.eln
+minimal-emacs.d/**/*.eln
+minimal-emacs.d/elpa/
+minimal-emacs.d/eln-cache/
+minimal-emacs.d/cache/
+minimal-emacs.d/custom.el
+minimal-emacs.d/history
+minimal-emacs.d/recentf.eld
+minimal-emacs.d/saveplace
+minimal-emacs.d/projects.eld

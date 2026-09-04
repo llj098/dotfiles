@@ -1,2 +1,3 @@
 source	target
 home	.
+minimal-emacs.d	.emacs.d
