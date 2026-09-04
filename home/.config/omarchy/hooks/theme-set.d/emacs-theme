@@ -2,18 +2,8 @@
 set -euo pipefail
 
 command -v omarchy-theme-color >/dev/null 2>&1 || exit 0
-command -v emacsclient >/dev/null 2>&1 || exit 0
-
-mode="$(omarchy-theme-color mode 2>/dev/null || true)"
-case "$mode" in
-  light|dark) ;;
-  *) exit 0 ;;
-esac
-
-# Do not start Emacs just for a theme transition.  If an existing server was
-# launched before this configuration was deployed, load the helper once.
-if emacsclient --eval 't' >/dev/null 2>&1; then
-  emacsclient --eval \
-    "(progn (unless (fboundp 'auto-omarchy) (load-file (expand-file-name \"~/.config/doom/desktop-theme.el\"))) (auto-omarchy \"$mode\"))" \
-    >/dev/null 2>&1 || true
-fi
+mode=$(omarchy-theme-color mode 2>/dev/null || true)
+[[ $mode == light || $mode == dark ]] || exit 0
+state=${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/emacs-theme-mode
+mkdir -p "${state%/*}"
+printf '%s\n' "$mode" >"$state"

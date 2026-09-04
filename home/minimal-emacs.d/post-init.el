@@ -2,6 +2,8 @@
 
 (eval-when-compile (require 'use-package))
 
+(declare-function file-notify-add-watch "filenotify")
+
 ;; Fcitx may submit terminal IME text as a bracketed-paste event.  Emacs'
 ;; `xterm-paste' deliberately sets the mark and echoes "Mark set" for every
 ;; submission.  Keep the mark behavior while suppressing only that transient
@@ -468,7 +470,34 @@
 ;; Leader maps and personal key bindings.
 (load (expand-file-name "keymaps" user-emacs-directory))
 
-;; Rosé Pine themes using the official palettes.
+(defconst lj/omarchy-theme-state-file
+  (expand-file-name "omarchy/emacs-theme-mode" (or (getenv "XDG_STATE_HOME") "~/.local/state/")))
+
+(defun lj/omarchy-theme-update ()
+  "Read Omarchy's mode and apply the matching Rosé Pine theme."
+  (let ((theme
+         (if (condition-case nil
+                 (with-temp-buffer
+                   (insert-file-contents lj/omarchy-theme-state-file)
+                   (eq (char-after (point-min)) ?d))
+               (file-error nil))
+             'rose-pine-moon
+           'rose-pine-dawn)))
+    (unless (equal custom-enabled-themes (list theme))
+      (mapc #'disable-theme custom-enabled-themes)
+      (load-theme theme t))))
+
+(defun lj/omarchy-theme-watch-h ()
+  "Watch the Omarchy mode file for changes."
+  (require 'filenotify)
+  (make-directory (file-name-directory lj/omarchy-theme-state-file) t)
+  (unless (file-exists-p lj/omarchy-theme-state-file)
+    (with-temp-file lj/omarchy-theme-state-file (insert "light\n")))
+  (file-notify-add-watch
+   lj/omarchy-theme-state-file '(change)
+   (lambda (_) (run-with-timer 0.05 nil #'lj/omarchy-theme-update))))
+
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes" user-emacs-directory))
-(load-theme 'rose-pine-dawn t)
+(lj/omarchy-theme-update)
+(lj/register-after-ui-task 80 #'lj/omarchy-theme-watch-h)
