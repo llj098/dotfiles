@@ -9,8 +9,6 @@
       minimal-emacs-package-initialize-and-refresh nil
       ;; Prefer compiled pre/post init files when they are up to date.
       minimal-emacs-load-compiled-init-files t
-      package-user-dir
-      (expand-file-name "~/.local/share/emacs/minimal-emacs/elpa/")
       ;; There is no reason to hide and later restore the mode line while all
       ;; startup redisplay is already inhibited.
       minimal-emacs-disable-mode-line-during-startup nil
