@@ -42,14 +42,16 @@
 
 (add-hook 'emacs-startup-hook #'lj/start-after-ui-tasks-h)
 
-;; Compile only Emacs Lisp files that are explicitly edited and saved.  Do not
-;; enable `compile-angel-on-load-mode': it scans loaded features and load-history,
-;; causing a fresh profile to native-compile hundreds of Emacs system files.
+;; Compile personal and manually managed Elisp without duplicating compilation
+;; already handled by Emacs itself for core libraries and package.el packages.
 (use-package compile-angel
   :ensure t
+  :defer 2
   :hook (emacs-lisp-mode . compile-angel-on-save-local-mode)
   :config
-  (setq compile-angel-verbose t)
+  (setq compile-angel-verbose t
+        compile-angel-exclude-core-emacs-directory t)
+  (compile-angel-exclude-directory package-user-dir)
 
   ;; Do not compile the init entry-point files.
   (dolist (file '("/init.el"
@@ -57,7 +59,9 @@
                   "/pre-init.el"
                   "/pre-early-init.el"
                   "/post-early-init.el"))
-    (add-to-list 'compile-angel-excluded-files file)))
+    (add-to-list 'compile-angel-excluded-path-suffixes file))
+
+  (compile-angel-on-load-mode 1))
 
 
 ;; Auto-revert in Emacs is a feature that automatically updates the
