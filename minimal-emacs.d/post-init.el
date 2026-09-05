@@ -42,20 +42,14 @@
 
 (add-hook 'emacs-startup-hook #'lj/start-after-ui-tasks-h)
 
-;; Load compile-angel only after startup, once Emacs has been idle for two
-;; seconds.  This keeps its load/require checks off the critical startup path.
-(defun lj/compile-angel-enable-after-startup-h ()
-  "Enable compile-angel after startup without delaying the initial display."
-  (run-with-idle-timer 2 nil #'compile-angel-on-load-mode 1))
-
+;; Compile only Emacs Lisp files that are explicitly edited and saved.  Do not
+;; enable `compile-angel-on-load-mode': it scans loaded features and load-history,
+;; causing a fresh profile to native-compile hundreds of Emacs system files.
 (use-package compile-angel
   :ensure t
-  :commands compile-angel-on-load-mode
-  :init
-  (add-hook 'emacs-startup-hook #'lj/compile-angel-enable-after-startup-h)
+  :hook (emacs-lisp-mode . compile-angel-on-save-local-mode)
   :config
   (setq compile-angel-verbose t)
-  (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode)
 
   ;; Do not compile the init entry-point files.
   (dolist (file '("/init.el"
