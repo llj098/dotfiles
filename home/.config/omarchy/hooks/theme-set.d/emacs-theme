@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-command -v omarchy-theme-color >/dev/null 2>&1 || exit 0
-mode=$(omarchy-theme-color mode 2>/dev/null || true)
-[[ $mode == light || $mode == dark ]] || exit 0
-state=${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/emacs-theme-mode
-mkdir -p "${state%/*}"
-printf '%s\n' "$mode" >"$state"

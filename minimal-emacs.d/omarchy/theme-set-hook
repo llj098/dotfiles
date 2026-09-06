@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+[[ -n ${1:-} ]] || exit 0
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy"
+state="$state_dir/emacs-theme-name"
+mkdir -p "$state_dir"
+temporary=$(mktemp "$state_dir/.emacs-theme-name.XXXXXX")
+trap 'rm -f -- "$temporary"' EXIT
+printf '%s\n' "$1" >"$temporary"
+mv -f -- "$temporary" "$state"
+trap - EXIT
