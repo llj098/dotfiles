@@ -1,0 +1,4 @@
+# Default UPower battery longevity policy.
+# Resume charging below 75%; stop charging at 80%.
+battery:*:*:dmi:*
+ CHARGE_LIMIT=75,80

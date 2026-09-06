@@ -114,6 +114,7 @@
 ;; Search: SPC s
 (keymap-set lj/leader-search-map "b" #'consult-line)
 (keymap-set lj/leader-search-map "B" #'consult-line-multi)
+(keymap-set lj/leader-search-map "s" #'consult-line)
 (keymap-set lj/leader-search-map "d" #'consult-ripgrep)
 (keymap-set lj/leader-search-map "f" #'consult-find)
 (keymap-set lj/leader-search-map "g" #'consult-grep)
