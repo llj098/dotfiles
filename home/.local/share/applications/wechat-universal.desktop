@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment=WeChat Universal
 TryExec=/usr/lib/wechat-universal/start.sh
-Exec=/usr/bin/env QT_SCALE_FACTOR=1.6 XCURSOR_SIZE=12 XMODIFIERS=@im=fcitx QT_IM_MODULE=fcitx GTK_IM_MODULE=fcitx WECHAT_IME_WORKAROUND=fcitx /usr/lib/wechat-universal/start.sh %u
+Exec=/usr/lib/wechat-universal/start.sh %u
 Icon=wechat-universal
 Name=WeChat (Universal)
 Name[zh_CN]=微信 Universal
