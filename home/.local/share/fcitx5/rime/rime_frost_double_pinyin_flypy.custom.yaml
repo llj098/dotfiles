@@ -4,3 +4,6 @@
 patch:
   speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
   recognizer/patterns/punct: "^$"
+  # 以词定字：[ 上屏首字，] 上屏尾字（同万象手感）
+  key_binder/select_first_character: bracketleft
+  key_binder/select_last_character: bracketright
