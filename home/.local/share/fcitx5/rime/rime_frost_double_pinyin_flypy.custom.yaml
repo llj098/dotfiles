@@ -1,0 +1,6 @@
+# 去掉 / 符号模式（方案1）：
+#   / 不再是编码字符（从 speller.alphabet 移除），也不再触发符号表（关掉 punct 识别器）
+#   效果：/ 变回普通标点，候选菜单可用数字选择；拼音输入不受影响
+patch:
+  speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+  recognizer/patterns/punct: "^$"
