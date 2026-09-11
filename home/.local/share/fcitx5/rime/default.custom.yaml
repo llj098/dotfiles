@@ -1,3 +1,4 @@
 patch:
   schema_list:
-    - schema: wanxiang
+    - schema: rime_frost_double_pinyin_flypy   # 白霜·小鹤双拼（默认）
+    - schema: rime_frost                      # 白霜·全拼
