@@ -27,6 +27,19 @@ patch:
   #下面是候选数量
   menu/page_size: 6
 
+  # 切换中英：万象本意是 Shift（Shift_L/R: commit_code）。
+  # 万象包自带的 default.yaml 被改名成 wanxiang_suggestion.yaml 而不生效，
+  # 实际继承的是 rime-prelude 的 default.yaml（Shift_L: inline_ascii —— 按住才
+  # 临时英文、松手就回来，所以"按左 Shift 不切换"）。这里按万象的原意覆盖。
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key:
+      Caps_Lock: clear
+      Shift_L: commit_code
+      Shift_R: commit_code
+      Control_L: noop
+      Control_R: noop
+
   #以下恢复``造词功能，也就是平时不记录，引导才记录，按需造词，如果你想恢复这个功能，请取消注释----
   #recognizer/patterns/add_user_dict: "^``[A-Za-z/`']*$"      #自造词引导方式
   #user_dict_set/enable_user_dict: true
