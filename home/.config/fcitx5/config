@@ -1,3 +1,11 @@
+[Hotkey]
+# Must stay empty. fcitx5's built-in default for AltTriggerKeys is Shift_L
+# (临时切换输入法 / temporary IM toggle); it swallows the left Shift key, so
+# the key never reaches Rime and 万象's ascii_composer switch_key
+# (Shift_L/Shift_R: commit_code) can never toggle 中/英.
+# Emptied = let Rime own the Shift key. See fcitx5-rime issues #13 / #15.
+AltTriggerKeys=
+
 [Hotkey/TriggerKeys]
 0=Control+Shift+space
 
