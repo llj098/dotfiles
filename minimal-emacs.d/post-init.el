@@ -369,6 +369,13 @@
   (global-set-key (kbd "C-z") 'undo-fu-only-undo)
   (global-set-key (kbd "C-S-z") 'undo-fu-only-redo))
 
+;; vundo to match the undo-tree experience
+(use-package vundo
+  :ensure t
+  :bind (("C-x u" . vundo))
+  :custom
+  (vundo-glyph-alist vundo-unicode-symbols))
+
 ;; The undo-fu-session package complements undo-fu by enabling the saving
 ;; and restoration of undo history across Emacs sessions, even after restarting.
 (use-package undo-fu-session
@@ -416,7 +423,7 @@
   (setq evil-want-C-u-delete t)
   ;; Whether Y yanks to the end of the line
   (setq evil-want-Y-yank-to-eol t)
-
+  (setq evil-undo-system 'undo-fu)
   ;; Evil is the first package initialized after the initial UI draw.
   (lj/register-after-ui-task 10 (lambda () (evil-mode 1)))
 
@@ -463,6 +470,22 @@
              magit-file-stage
              magit-file-unstage))
 
+
+(use-package eat
+  :ensure t
+  :commands eat
+  :config
+  ;; Eat is lazy-loaded after the one-shot after-UI queue has run.
+  ;; Apply the state per buffer, also overriding evil-collection's default.
+  (add-hook 'eat-mode-hook #'evil-emacs-state)
+  ;; Output batching values suggested by claude-code.el for Eat.
+  (setq eat-minimum-latency 0.033
+        eat-maximum-latency 0.1)
+  ;; Only Shift+PageUp/PageDown scroll Eat; plain keys go to the TUI.
+  (dolist (map (list eat-mode-map eat-semi-char-mode-map))
+    (define-key map (kbd "S-<prior>") #'scroll-down-command)
+    (define-key map (kbd "S-<next>") #'scroll-up-command)))
+
 ;; Org paths, capture, agenda, Org-roam, and note search.
 (load (expand-file-name "org-config" user-emacs-directory))
 
@@ -473,3 +496,6 @@
            (executable-find "omarchy-theme-current")
            (executable-find "omarchy-hook"))
   (load (expand-file-name "omarchy/init" user-emacs-directory)))
+
+;; Keep the existing mode-line information, with flat, low-contrast styling.
+(load (expand-file-name "mode-line-style" user-emacs-directory))

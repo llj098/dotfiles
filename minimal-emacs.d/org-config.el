@@ -76,6 +76,7 @@
   :ensure nil
   :commands (org-agenda org-capture org-mode org-store-link org-todo-list)
   :mode ("\\.org\\'" . org-mode)
+  :hook (org-mode . visual-line-mode)
   :init
   (setq org-directory lj/org-directory
         org-agenda-files
@@ -92,6 +93,12 @@
         org-log-into-drawer "LOGBOOK"
         org-clock-into-drawer "LOGBOOK"
         org-log-refile 'time
+        ;; Include project/daily agenda files, not only the current buffer.
+        org-refile-targets '((nil :maxlevel . 8)
+                             (org-agenda-files :maxlevel . 8))
+        ;; Prefix paths with file names and allow filing at file level.
+        org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps nil
         org-log-done 'time
         org-log-reschedule 'time
         org-log-redeadline 'time
@@ -102,6 +109,13 @@
            "|"
            "DONE(d!)" "CANCELLED(c@)")))
   :config
+  ;; Explicit subtree movement: unlike org-shiftmetaup/down, keep all contents.
+  (keymap-set org-mode-map "M-S-<up>" #'org-move-subtree-up)
+  (keymap-set org-mode-map "M-S-<down>" #'org-move-subtree-down)
+
+  ;; Agenda jumps should reveal the whole target subtree, not just one child.
+  (setf (alist-get 'agenda org-fold-show-context-detail) 'ancestors-full)
+
   (setq org-priority-get-priority-function #'lj/org-inherited-priority)
   (when (boundp 'org-get-priority-function)
     (setq org-get-priority-function #'lj/org-inherited-priority))

@@ -216,6 +216,10 @@
 ;; Evil provides the virtual <leader> event. SPC is used in normal-like states;
 ;; M-SPC reaches the same map from insert and Emacs states.
 (with-eval-after-load 'evil
+  ;; Keep Emacs line navigation in Evil normal and insert states.
+  (dolist (map (list evil-normal-state-map evil-insert-state-map))
+    (keymap-set map "C-a" #'move-beginning-of-line)
+    (keymap-set map "C-e" #'move-end-of-line))
   (keymap-set lj/leader-map "h" help-map)
   (keymap-set lj/leader-map "w" evil-window-map)
   ;; Use the function API so this file also compiles correctly when Evil's
