@@ -1,3 +1,6 @@
 patch:
   schema_list:
     - schema: wanxiang
+  # Remember the emoji choice; 03 seeds enabled only when no choice exists.
+  switcher/save_options/+:
+    - emoji
