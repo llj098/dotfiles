@@ -125,7 +125,9 @@ fi
 export WINEFSYNC=1
 
 # Local secrets are intentionally kept out of dotfiles/git.
-[ -f "$HOME/.config/secrets/env" ] && source "$HOME/.config/secrets/env"
+if [ -r "$HOME/.config/secrets/env" ]; then
+  source "$HOME/.config/secrets/env"
+fi
 
 # >>> grok installer >>>
 export PATH="$HOME/.grok/bin:$PATH"

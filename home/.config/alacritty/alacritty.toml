@@ -29,3 +29,9 @@ bindings = [
 
 [selection]
 save_to_clipboard = true
+
+
+[[hints.enabled]]
+regex = '(https?://[^\s<>"`]+)|([0-9A-Fa-f]{8}-(?:[0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12})|(?-u:\b)[0-9A-Fa-f]{7,40}(?-u:\b)|(?:\./|\.\./|/)[A-Za-z0-9._~+@%/-]+|(?-u:\b)[A-Za-z0-9._-]+\.(?:py|rs|go|js|ts|tsx|jsx|json|toml|yaml|yml|md|txt|sh|bash|zsh|el|org|c|h|cpp|hpp|java|kt|lua|nix|conf|log)(?-u:\b)|(?-u:\b)(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?-u:\b)'
+action = "Copy"
+binding = { key = "Y", mods = "Control|Shift" }

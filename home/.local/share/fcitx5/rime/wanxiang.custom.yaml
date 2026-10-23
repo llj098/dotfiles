@@ -1,6 +1,9 @@
 # 本文件的工作目录是在用户根目录，本目录携带是因为如果放外面就会更新的时候覆盖你的修改，因此我只能藏起来。
 # 如果没有按初始化说明进行初始化那么你需要手动复制本文件到上层目录，请知悉。
 patch:
+  # 跟随上游 2026-10-15：关闭模型上下文重排，避免空格后候选跳动
+  translator/contextual_suggestions: false
+
   speller/algebra:
     __patch:
       #- wanxiang_algebra:/模糊音_nl

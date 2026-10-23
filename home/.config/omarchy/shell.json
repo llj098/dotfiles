@@ -11,9 +11,9 @@
           "mode": "Float Toggle"
         },
         {
-          "format": "dddd HH:mm",
-          "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
+          "format": "ddd d MMM HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
           "verticalFormat": "HH\n—\nmm"
         },
         {
@@ -57,18 +57,18 @@
           "id": "fatlj.mpris"
         },
         {
-          "id": "omarchy.audio"
-        },
-        {
           "id": "omarchy.monitor"
         },
         {
           "id": "omarchy.power"
+        },
+        {
+          "id": "omarchy.audio"
         }
       ]
     },
     "position": "bottom",
-    "transparent": true
+    "transparent": false
   },
   "idle": {
     "lock": 300,
